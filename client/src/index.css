@@ -1,0 +1,184 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+body{
+  font-family: 'Roboto',sans-serif;
+}
+
+.header-nav{
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+ 
+}
+
+.header-nav input{
+  width: 400px;
+  margin-left: 10px;
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+
+.header-nav button{
+  padding: 3px 10px;
+  color: white;
+  font-size: medium;
+  background-color: black;
+  border-color: white;
+  margin-right: 10px;
+}
+
+.header-nav .child-2{
+
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+  
+  
+}
+
+
+
+
+main{
+  min-height: 80vh;
+  width: 100%;
+}
+.carousel-item{
+  height: 400px;
+} 
+.carousel-item img{
+  height: 400px;
+ 
+}
+
+.home{
+
+  background-color: beige !important;
+   
+}
+
+.footer{
+  position: relative;
+  bottom: 0;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  min-height: 10vh;
+  width: 100%;
+  background-color: crimson;
+  
+}
+
+
+
+.cast-section{
+  display: flex;
+  margin-top: 2rem;
+}
+
+.cast-section .artist{
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.cast-section .artist img{
+  height: 150px;
+  width: 150px;
+
+}
+
+
+.crew-section{
+  display: flex;
+  margin-top: 2rem;
+}
+
+.crew-section .artist{
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.crew-section .artist img{
+  height: 150px;
+  width: 150px;
+
+}
+
+.login-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem !important;
+  padding: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  
+}
+
+.login-form button{
+  margin-top: 1rem;
+}
+
+.error-div{
+  color: red;
+}
+
+.modal-container{
+  position: fixed;
+  z-index: 100;
+  height: 25rem;
+  width: 20rem;
+  top: 0;
+  left: 85%;
+}
+
+.modal-card{
+  width: 15rem;
+  height: 3rem;
+  padding: 5px;
+
+}
+
+.reg-form{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem !important;
+  padding: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+ 
+}
+
+
+.reg-form input{
+  margin: 0.5rem;
+
+}
+
+.star-rating{
+  display: flex;
+ 
+}
+
+
+
+
+
+
+
+
