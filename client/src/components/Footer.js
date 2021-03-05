@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='footer'>
-      <div className='mt-2 footer-content'>
+      <div className='footer-content'>
       <h5>@CopyRight BookmyShow</h5>
       </div>
       

@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@300;500&display=swap');
 
 *{
   padding: 0;
@@ -9,7 +9,7 @@
 }
 
 body{
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Muli',sans-serif;
 }
 
 .header-nav{
@@ -33,6 +33,10 @@ body{
   background-color: black;
   border-color: white;
   margin-right: 10px;
+}
+
+.header-nav button:focus{
+  outline: 0 !important;
 }
 
 .header-nav .child-2{
@@ -75,6 +79,14 @@ main{
   width: 100%;
   background-color: crimson;
   
+}
+
+.footer .footer-content h5{
+  margin-top: 1rem;
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
 }
 
 
@@ -138,6 +150,10 @@ main{
 
 .modal-container{
   position: fixed;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   z-index: 100;
   height: 25rem;
   width: 20rem;
@@ -173,6 +189,43 @@ main{
 .star-rating{
   display: flex;
  
+}
+
+.screen-list-container{
+  margin-top: 3rem;
+}
+
+.add-movie-form{
+  padding: 15px;
+  border: 0.5px solid grey;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  background-color: beige;
+  color: blue;
+}
+
+.add-movie-form .form-group{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.add-movie-form input[type=text],input[type=textarea],select{
+  flex: 0.67;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.add-movie-form input[type=text],input[type=textarea],select:focus{
+  outline: 0;
+}
+
+.add-movie-form button{
+  width: 100%;
 }
 
 

@@ -15,7 +15,7 @@ const screenSchema=mongoose.Schema({
     },
     show_timing:{
         type:Array,
-        default:[11.30,2.30,6.30,9.30]
+        default:['11am','2pm','6pm','9pm']
     }
 },{timestamps:true})
 

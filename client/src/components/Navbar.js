@@ -36,12 +36,12 @@ const Navbar = () => {
   </button>
   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <Link className="dropdown-item" to="/screens">Screens</Link>
-    <Link className="dropdown-item" to="/Movies">Movies</Link>
+    <Link className="dropdown-item" to="/movies">Movies</Link>
     <Link className="dropdown-item" to="/bookings">Bookings</Link>
   </div>
 </div>
   }        
-  {user && <h8 className='mr-2'>Welcome {user.name}</h8>}
+  {user && <h5 className='mr-2'>Welcome {user.name}</h5>}
            {
              !user?
              <Link to='/login'><button className='btn btn-outline-dark login-btn'>Sign In</button></Link> 

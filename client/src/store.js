@@ -14,6 +14,10 @@ import {
 
 import {modalReducer} from './reducers/modelReducer'
 import {ratingReducer} from './reducers/ratingReducer'
+import {viewScreensReducer,
+        addScreensReducer,
+        deleteScreensReducer
+} from './reducers/screenReducers'
 
 
 const reducer=combineReducers({
@@ -23,7 +27,10 @@ const reducer=combineReducers({
     modal:modalReducer,
     register:userRegisterReducer,
     ratingReducer,
-    addReview:addReviewReducer
+    addReview:addReviewReducer,
+    screensList:viewScreensReducer,
+    createScreen:addScreensReducer,
+    deleteScreen:deleteScreensReducer
     
 })
 

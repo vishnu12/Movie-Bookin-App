@@ -3,7 +3,9 @@ import Movie from '../models/movie.js'
 
 export const movieList=asyncHandler(async (req,res)=>{
 
-    const movies=await Movie.find({})
+    const movies=await Movie.find()
+                 .populate('screens.screen','_id name')
+                
 
     if(movies) return res.status(200).json(movies)
     return res.status(404).json({message:'Not found'})

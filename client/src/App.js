@@ -9,6 +9,10 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import ModalComp from './components/ModalComp';
 import Register from './components/Register'
+import viewScreens from './components/admin-actions/viewScreens';
+import addScreen from './components/admin-actions/addScreen';
+import listMovies from './components/admin-actions/listMovies';
+import addMovies from './components/admin-actions/addMovies';
 
 function App() {
   const dispatch=useDispatch()
@@ -22,9 +26,13 @@ function App() {
     <ModalComp />
    <Switch>
      <Route exact path='/' component={Home}/>
-     <Route path='/details/:id' component={DetailsPage}/>
-     <Route path='/login' component={Login}/>
-     <Route path='/register' component={Register}/>
+     <Route exact path='/details/:id' component={DetailsPage}/>
+     <Route exact path='/login' component={Login}/>
+     <Route exact path='/register' component={Register}/>
+     <Route exact path='/screens' component={viewScreens}/>
+     <Route exact path='/add-screen' component={addScreen}/>
+     <Route exact path='/movies' component={listMovies}/>
+     <Route exact path='/add-movies' component={addMovies}/>
    </Switch>
    </main>
    <Footer />

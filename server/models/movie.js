@@ -4,7 +4,8 @@ import mongoose from 'mongoose'
 const playingScreenSchema=mongoose.Schema({
     screen:{
         type:mongoose.Types.ObjectId,
-        ref:'Screen'
+        ref:'Screen',
+        
     }
 },{timestamps:true})
 
@@ -12,10 +13,9 @@ const reviewSchema=mongoose.Schema({
     user:{
         type:mongoose.Types.ObjectId,
         ref:'User',
-        required:true
     },
-    rating:{type:Number,required:true},
-    comment:{type:String,required:true}
+    rating:{type:Number},
+    comment:{type:String}
 },{timestamps:true})
 
 const actorsSchema=mongoose.Schema({

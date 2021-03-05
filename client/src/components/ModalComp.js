@@ -16,7 +16,7 @@ const ModalComp = () => {
             <h3>Hey !</h3>
           </li>
           <li className='card modal-card'>
-            <Link to='/register' className='btn btn-outline-info w-75'>Login/Register</Link>
+            <Link to='/register' className='btn btn-outline-info w-100'>Login/Register</Link>
           </li>
           <li className='card modal-card'>
             <h6>Book A Smile</h6>
