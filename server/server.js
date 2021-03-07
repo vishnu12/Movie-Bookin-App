@@ -1,5 +1,6 @@
 
 import express from 'express'
+import path from 'path'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import movieRoutes from './routes/movieRoutes.js'
@@ -13,6 +14,10 @@ connectDB()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
+
+
+const __dirname=path.resolve()
+app.use('/uploads',express.static(path.join(__dirname,'/uploads')))
 
 app.use('/movies',movieRoutes)
 app.use('/user',userRoutes)

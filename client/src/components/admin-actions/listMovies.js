@@ -1,21 +1,27 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import { Link } from 'react-router-dom'
-import { movieListAll } from '../../actions/movieActions'
+import { deleteMovieFromDB, movieListAll } from '../../actions/movieActions'
 
 const listMovies = () => {
 
     const dispatch=useDispatch() 
 
     const movieList=useSelector(state=>state.movieList)
-    
     const {loading,error,movies}=movieList
     
+
+    const deleteMovie=useSelector(state=>state.deleteMovie)
+    const {loading:deleteLoading,error:deleteError,success}=deleteMovie
     
     useEffect(()=>{
       dispatch(movieListAll())
-    },[dispatch])
+    },[dispatch,success])
     
+
+   const deleteHandler=(id)=>{
+     dispatch(deleteMovieFromDB(id))
+   } 
 
   return (
     
@@ -36,7 +42,7 @@ const listMovies = () => {
               <td>{movie.name}</td>
               <td>25</td>
               <td><button className='btn btn-primary'>Update</button></td>
-              <td><button className='btn btn-danger'>Delete</button></td>
+              <td><button className='btn btn-danger' onClick={()=>deleteHandler(movie._id)}>Delete</button></td>
           </tr>
           })}
       </tbody>

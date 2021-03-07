@@ -9,7 +9,9 @@ import {
 import {
         movieListReducer,
         movieByIdReducer,
-        addReviewReducer
+        addReviewReducer,
+        addMovieReducer,
+        deleteMovieReducer
        } from './reducers/movieReducers'
 
 import {modalReducer} from './reducers/modelReducer'
@@ -30,7 +32,9 @@ const reducer=combineReducers({
     addReview:addReviewReducer,
     screensList:viewScreensReducer,
     createScreen:addScreensReducer,
-    deleteScreen:deleteScreensReducer
+    deleteScreen:deleteScreensReducer,
+    addMovie:addMovieReducer,
+    deleteMovie:deleteMovieReducer
     
 })
 

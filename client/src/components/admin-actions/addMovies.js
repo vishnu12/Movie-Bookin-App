@@ -2,8 +2,11 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { listScreens } from '../../actions/screenActions'
+import {addMovieToDB} from '../../actions/movieActions'
+import { MOVIE_ADD_RESET } from '../../constants/movieConstants'
 
-const addMovies = () => {
+
+const addMovies = ({history}) => {
 
   const [movie, setMovie] = useState('')
   const [trailerUrl, setTrailerUrl] = useState('')
@@ -34,9 +37,16 @@ const addMovies = () => {
   const screensList = useSelector(state => state.screensList)
   const { screens, loading, error } = screensList
 
+  const addMovie = useSelector(state => state.addMovie)
+  const { success, loading:addMovLoading, error:addMovError } = addMovie
+
   useEffect(() => {
+    dispatch({type:MOVIE_ADD_RESET})
     dispatch(listScreens())
-  }, [dispatch])
+    if(success){
+    history.push('/movies')
+    }
+  }, [dispatch,success])
 
   const uploadHandler = async() => {
     let formData = new FormData()
@@ -75,17 +85,17 @@ const addMovies = () => {
       cast: [
         {
           name: actorName,
-          image: path && path[0],
+          image: path && path[1],
           charactor: actorChar
         },
         {
           name: actressName,
-          image: path && path[1],
+          image: path && path[2],
           charactor: actressChar
         },
         {
           name: suppActorName,
-          image: path && path[2],
+          image: path && path[3],
           charactor: suppActorChar
         },
 
@@ -94,31 +104,30 @@ const addMovies = () => {
       crew:[
         {
           name:directorName,
-          image:path && path[3],
+          image:path && path[4],
           role:'director'
         },
         {
           name:producerName,
-          image:path && path[4],
+          image:path && path[5],
           role:'producer'
         },
         {
           name:musicDirName,
-          image:path && path[5],
+          image:path && path[6],
           role:'music director'
         }
       ],
+      image:path && path[0],
       trailer:trailerUrl,
       rating:4,
     }
 
-    console.log(movieData);
+    dispatch(addMovieToDB(movieData))
 
   }
 
 
-
- 
 
   return (
     <form className='add-movie-form col-md-6 mt-5 mr-auto ml-auto' onSubmit={handleSubmit}>

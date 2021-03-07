@@ -44,7 +44,6 @@ const movieSchema=mongoose.Schema({
 
     image:{
         type:String,
-        required:true
     },
     trailer:{type:String},
     rating:{

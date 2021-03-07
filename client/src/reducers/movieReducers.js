@@ -8,7 +8,14 @@ import {
     MOVIE_BY_ID_SUCCESS,
     ADD_REVIEW_FAIL,
     ADD_REVIEW_REQUEST,
-    ADD_REVIEW_SUCCESS
+    ADD_REVIEW_SUCCESS,
+    MOVIE_ADD_FAIL,
+    MOVIE_ADD_REQUEST,
+    MOVIE_ADD_SUCCESS,
+    MOVIE_ADD_RESET,
+    MOVIE_DELETE_FAIL,
+    MOVIE_DELETE_REQUEST,
+    MOVIE_DELETE_SUCCESS
 }
     from '../constants/movieConstants'
 
@@ -81,6 +88,63 @@ export const addReviewReducer=(state={},action)=>{
                 loading: false,
                 error:action.payload
             }
+        default:
+            return state;
+    }
+}
+
+
+
+export const addMovieReducer=(state={},action)=>{
+      
+    switch (action.type) {
+        case MOVIE_ADD_REQUEST:
+            return {
+                loading: true,
+            }
+
+        case MOVIE_ADD_SUCCESS:
+            return {
+                loading: false,
+                success:true
+            }
+
+        case MOVIE_ADD_FAIL:
+            return {
+                loading: false,
+                error:action.payload
+            }
+
+            case MOVIE_ADD_RESET:
+                return {}
+
+        default:
+            return state;
+    }
+}
+
+
+export const deleteMovieReducer=(state={},action)=>{
+      
+    switch (action.type) {
+        case MOVIE_DELETE_REQUEST:
+            return {
+                loading: true,
+            }
+
+        case MOVIE_DELETE_SUCCESS:
+            return {
+                loading: false,
+                success:true
+            }
+
+        case MOVIE_DELETE_FAIL:
+            return {
+                loading: false,
+                error:action.payload
+            }
+
+
         default:
             return state;
     }

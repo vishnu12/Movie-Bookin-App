@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import { createScreens } from '../../actions/screenActions'
+import { SCREEN_ADD_RESET } from '../../constants/sreenConstants'
 
 
 const addScreen = ({history}) => {
@@ -19,6 +20,7 @@ const createScreen=useSelector(state=>state.createScreen)
 const {success}=createScreen
 
 useEffect(()=>{
+   dispatch({type:SCREEN_ADD_RESET})
   if(success){
    history.push('/screens')
   }

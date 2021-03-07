@@ -45,3 +45,23 @@ export const addReview=asyncHandler(async (req,res)=>{
 // export const getReviews=asyncHandler(async (req,res)=>{
 //     let reviews=await 
 // })
+
+export const addMovie=asyncHandler(async (req,res)=>{
+ 
+const movie=new Movie(req.body)
+
+const addedMovie=await movie.save()
+
+if(addMovie) return res.status(201).json({message:'Movie added'})
+
+res.status(400).json({error:'Could not add the movie'})
+
+ })
+
+
+ export const deleteMovie=asyncHandler(async (req,res)=>{
+     
+    const movie=await Movie.findById(req.params.id)
+    await movie.remove()
+    res.status(200).json({message:'Movie removed'})
+ })

@@ -6,7 +6,8 @@ import {
     SCREEN_ADD_REQUEST,
     SCREEN_ADD_SUCCESS,SCREEN_DELETE_FAIL,
     SCREEN_DELETE_REQUEST,
-    SCREEN_DELETE_SUCCESS
+    SCREEN_DELETE_SUCCESS,
+    SCREEN_ADD_RESET
 } from '../constants/sreenConstants'
 
 
@@ -49,6 +50,9 @@ export const addScreensReducer = (state = {}, action) => {
                 loading: false,
                 error: action.payload
             }
+
+        case SCREEN_ADD_RESET:
+            return {}    
         default:
             return state;
     }
