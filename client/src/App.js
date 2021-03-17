@@ -13,6 +13,8 @@ import viewScreens from './components/admin-actions/viewScreens';
 import addScreen from './components/admin-actions/addScreen';
 import listMovies from './components/admin-actions/listMovies';
 import addMovies from './components/admin-actions/addMovies';
+import SeatPicker from './components/SeatPicker';
+import ChooseTheatre from './components/ChooseTheatre';
 
 function App() {
   const dispatch=useDispatch()
@@ -33,6 +35,8 @@ function App() {
      <Route exact path='/add-screen' component={addScreen}/>
      <Route exact path='/movies' component={listMovies}/>
      <Route exact path='/add-movies' component={addMovies}/>
+     <Route exact path='/book/:id' component={ChooseTheatre}/>
+     <Route exact path='/book/seats/:movieId/:time?' component={SeatPicker}/>
    </Switch>
    </main>
    <Footer />

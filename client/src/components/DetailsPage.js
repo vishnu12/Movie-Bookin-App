@@ -15,7 +15,7 @@ const DetailsPage = ({match}) => {
   const movieById=useSelector(state=>state.movieById)
 
   const ratingReducer=useSelector(state=>state.ratingReducer)
-   const {rating,hoverRating}=ratingReducer
+   const {rating}=ratingReducer
 
    const userLogin=useSelector(state=>state.userLogin)
    const {user}=userLogin
@@ -35,8 +35,8 @@ const DetailsPage = ({match}) => {
   const submit=e=>{
     e.preventDefault()
     let data={
-      rating,
-      comment
+      rating:rating+1,
+      comment:comment
     }
     dispatch(addReviewToMovie(movieId,data))
 
@@ -53,9 +53,9 @@ const DetailsPage = ({match}) => {
       
       <div className='poster-section'>
       <iframe width="100%" height="400vh" 
-      src="https://www.youtube.com/embed/UTiXQcrLlv4" frameborder="0" 
+      src={movie && movie.trailer} frameBorder="0" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen></iframe>
+      allowFullScreen></iframe>
       </div>
     
     <div className='row'>
@@ -63,8 +63,8 @@ const DetailsPage = ({match}) => {
 <div className='about-section my-3 mb-2'>
           <h3>About the movie</h3>
           {
-             movie && <p>{!toggle?slicedPara:para}...<Link style={{textDecoration:'none'}} 
-              className='info' onClick={()=>setToggle(!toggle)}>{!toggle?'More':'Less'}</Link></p>
+             movie && <p>{!toggle?slicedPara+'...':para+'.'}<a style={{textDecoration:'none',cursor:'pointer'}} 
+              className='info' onClick={()=>setToggle(!toggle)}>{!toggle?'More':'Less'}</a></p>
           }
       </div>
       <h3 className='mt-3'>Cast</h3>
@@ -73,7 +73,9 @@ const DetailsPage = ({match}) => {
           movie && movie.cast && movie.cast.map((item,k)=>{
             return <div className='artist' key={k}>
             <img src={item.image} className='rounded-circle' alt='pic'/>
-            <h7>{item.name}</h7>
+            <h5>{item.name}</h5>
+            <p>as {item.charactor}</p>
+
           </div>
           })
         }
@@ -84,14 +86,15 @@ const DetailsPage = ({match}) => {
           movie && movie.crew && movie.crew.map((item,k)=>{
             return <div className='artist' key={k}>
             <img src={item.image} className='rounded-circle' alt='pic'/>
-            <h7>{item.name}</h7>
+            <h5>{item.name}</h5>
+            <p>{item.role}</p>
           </div>
           })
         }
       </div>
 </div>
 <div className='col-12 col-md-4' style={{marginTop:'2rem'}}>
-<Link to='/book' className='btn btn-danger' style={{width:'10rem'}}>Book Tickets</Link>
+<Link to={`/book/${movie && movie._id}`} className='btn btn-danger' style={{width:'10rem'}}>Book Tickets</Link>
 <h3 className='mt-3 text-center'>Reviews</h3>
 {
   user?
@@ -107,9 +110,9 @@ const DetailsPage = ({match}) => {
 <div className='reviews-tab mt-5'>
 {
   movie && movie.reviews && movie.reviews.map((review,index)=>{
-    return <div key={index} mb-3 mt-2>
+    return <div key={index} className='mb-3 mt-2'>
           <div className='d-flex'>
-          <h8>{review.user.name}</h8> 
+          <h5>{review.user.name}</h5> 
           <Rating rating={review.rating}/>
           </div>
           <p><small>{review.comment}</small></p>

@@ -32,13 +32,14 @@ useEffect(()=>{
 <div className="col-md-9">
 <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
 <h4 className='mt-5'>Movies</h4>
-<Link className='mt-3' style={{textDecoration:'none'}}>View more</Link>
+<a className='mt-3' style={{textDecoration:'none'}}>View more</a>
 </div>
 <div className="row">
     {
       movies && movies.map(item=>{
         return <div className="col-md-4" key={item._id}>
                <Link to={`/details/${item._id}`} style={{textDecoration:'none',textAlign:"center"}}><MovieCard 
+               id={item._id}
                image={item.image}
                movie={item.name}
                rating={item.rating}/></Link>

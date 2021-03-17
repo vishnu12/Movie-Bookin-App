@@ -16,6 +16,7 @@ export const movieById=asyncHandler(async (req,res)=>{
 
     const movie=await Movie.findById(req.params.id)
           .populate('reviews.user','_id name')
+          .populate('screens.screen','_id name show_timing')
     if(movie) return res.status(200).json(movie)
     return res.status(404).json({message:'Not found'})
 

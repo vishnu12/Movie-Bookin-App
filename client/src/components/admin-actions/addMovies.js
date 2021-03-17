@@ -119,6 +119,7 @@ const addMovies = ({history}) => {
         }
       ],
       image:path && path[0],
+      screens:[{screen:screen}],
       trailer:trailerUrl,
       rating:4,
     }
@@ -126,7 +127,6 @@ const addMovies = ({history}) => {
     dispatch(addMovieToDB(movieData))
 
   }
-
 
 
   return (

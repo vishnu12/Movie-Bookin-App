@@ -44,7 +44,7 @@ export const getMovieById=(id)=>async (dispatch)=>{
         dispatch({type:MOVIE_BY_ID_REQUEST})
 
         const {data}=await axios.get(`/movies/${id}`)
-        console.log(data);
+
         dispatch({
             type:MOVIE_BY_ID_SUCCESS,
             payload:data

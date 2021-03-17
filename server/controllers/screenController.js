@@ -33,3 +33,4 @@ export const deleteScreen=asyncHandler(async(req,res)=>{
     await Screen.findByIdAndDelete(req.params.id)
     res.status(200).json({message:'Screen Removed'})
 })
+
