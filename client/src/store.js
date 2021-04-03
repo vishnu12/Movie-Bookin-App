@@ -21,6 +21,11 @@ import {viewScreensReducer,
         deleteScreensReducer
 } from './reducers/screenReducers'
 
+import {
+    createOrderReducer,
+    findOrderReducer,
+    deleteOrderReducer
+} from './reducers/orderReducer'
 
 const reducer=combineReducers({
     userLogin:userLoginReducer,
@@ -34,7 +39,10 @@ const reducer=combineReducers({
     createScreen:addScreensReducer,
     deleteScreen:deleteScreensReducer,
     addMovie:addMovieReducer,
-    deleteMovie:deleteMovieReducer
+    deleteMovie:deleteMovieReducer,
+    createOrder:createOrderReducer,
+    findOrder:findOrderReducer,
+    deleteOrder:deleteOrderReducer
     
 })
 

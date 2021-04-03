@@ -57,7 +57,7 @@ const TimeDiv=({screen,movieId})=>{
               <h3 style={{color: 'red'}}>{itm.name}</h3>
              {
               itm.timing && itm.timing.map((time,i)=>{
-                   return <Link key={i} to={`/book/seats/${movieId}?time=${time}`}><button className='btn btn-success bg-transparent'>{time}</button></Link>
+                   return <Link key={i} to={`/book/seats/${itm._id}/${movieId}?time=${time}`}><button className='btn btn-success bg-transparent'>{time}</button></Link>
                })  
              }
           </div>
@@ -68,21 +68,29 @@ const TimeDiv=({screen,movieId})=>{
 }
 
 
-const ChooseTheatre = ({match}) => { 
+const ChooseTheatre = ({match,history}) => { 
     const dispatch=useDispatch()
+
+   const userLogin=useSelector(state=>state.userLogin)
+   const {user} =userLogin
     useEffect(()=>{
+      if(!user){
+        history.push(`/login`)
+      }  
      dispatch(getMovieById(match.params.id))
-    },[match,dispatch])
+    },[match,dispatch,history])
 
     const movieById=useSelector(state=>state.movieById)
     const {movie}=movieById
     const screen=movie && movie.screens && movie.screens.map((item,indx)=>{
         return {
             name:item.screen.name,
-            timing:item.screen.show_timing
+            timing:item.screen.show_timing,
+            _id:item.screen._id
         }
     })
 
+   
     return (
         <>
             <Header />

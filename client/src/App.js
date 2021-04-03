@@ -15,6 +15,7 @@ import listMovies from './components/admin-actions/listMovies';
 import addMovies from './components/admin-actions/addMovies';
 import SeatPicker from './components/SeatPicker';
 import ChooseTheatre from './components/ChooseTheatre';
+import PaymentScreen from './components/PaymentScreen';
 
 function App() {
   const dispatch=useDispatch()
@@ -36,7 +37,8 @@ function App() {
      <Route exact path='/movies' component={listMovies}/>
      <Route exact path='/add-movies' component={addMovies}/>
      <Route exact path='/book/:id' component={ChooseTheatre}/>
-     <Route exact path='/book/seats/:movieId/:time?' component={SeatPicker}/>
+     <Route exact path='/book/seats/:screenId/:movieId/:time?' component={SeatPicker}/>
+     <Route exact path='/payment' component={PaymentScreen}/>
    </Switch>
    </main>
    <Footer />
