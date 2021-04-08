@@ -16,6 +16,7 @@ import addMovies from './components/admin-actions/addMovies';
 import SeatPicker from './components/SeatPicker';
 import ChooseTheatre from './components/ChooseTheatre';
 import PaymentScreen from './components/PaymentScreen';
+import FinalScreen from './components/FinalScreen';
 
 function App() {
   const dispatch=useDispatch()
@@ -39,6 +40,7 @@ function App() {
      <Route exact path='/book/:id' component={ChooseTheatre}/>
      <Route exact path='/book/seats/:screenId/:movieId/:time?' component={SeatPicker}/>
      <Route exact path='/payment' component={PaymentScreen}/>
+     <Route exact path='/final' component={FinalScreen}/>
    </Switch>
    </main>
    <Footer />

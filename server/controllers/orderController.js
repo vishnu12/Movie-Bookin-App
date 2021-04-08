@@ -1,11 +1,5 @@
 import asyncHandler from 'express-async-handler'
-import Razorpay from 'razorpay'
 import Order from '../models/reservation.js'
-
-let instance = new Razorpay({
-    key_id: `${process.env.RAZOR_PAY_KEY_ID}`,
-    key_secret: `${process.env.RAZOR_PAY_KEY_SECRET}`,
-});
 
 export const createOrder = asyncHandler(async (req,res)=>{
     const orderData=req.body
@@ -17,30 +11,7 @@ export const createOrder = asyncHandler(async (req,res)=>{
     res.status(404).json({error:'Operation failed'})
 })
 
-// export const createOrder=asyncHandler(async (req,res)=>{
-//     try {
-//         const options = {
-//           amount: req.body.amount*100, 
-//           currency: "INR",
-//           receipt: "receipt#1",
-//           payment_capture: 0,
-//         };
-//       instance.orders.create(options, async function (err, order) {
-//           console.log(options);
-//         if (err) {
-//           return res.status(500).json({
-//             message: "Something Went Wrong",
-//           });
-//         }
-      
-//     console.log(order);
-//      });
-//     } catch (err) {
-//       return res.status(500).json({
-//         message: "Something Went Wrong",
-//       });
-//      }
-//     });
+ 
 
 export const getOrderPerScreen=asyncHandler(async (req,res) => {
 
@@ -59,6 +30,17 @@ export const deleteOrder=asyncHandler(async (req,res)=>{
     if(order) await order.remove()
     res.status(200).json({message:'Order removed'})
 })
+
+
+export const updatePayment=asyncHandler(async(req,res)=>{
+    const id=req.params.id
+    const updatedOrder=await Order.findByIdAndUpdate(id,{payment_status:'Paid'},{new:true})
+    if(updatePayment) return res.status(201).json(updatedOrder)
+    res.status(400).json({error:'Update failed'})
+})
+
+
+
 
 
 

@@ -77,7 +77,7 @@ const ChooseTheatre = ({match,history}) => {
       if(!user){
         history.push(`/login`)
       }  
-     dispatch(getMovieById(match.params.id))
+      dispatch(getMovieById(match.params.id))
     },[match,dispatch,history])
 
     const movieById=useSelector(state=>state.movieById)

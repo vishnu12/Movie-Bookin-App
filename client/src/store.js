@@ -24,7 +24,8 @@ import {viewScreensReducer,
 import {
     createOrderReducer,
     findOrderReducer,
-    deleteOrderReducer
+    deleteOrderReducer,
+    updateOrderReducer
 } from './reducers/orderReducer'
 
 const reducer=combineReducers({
@@ -42,7 +43,8 @@ const reducer=combineReducers({
     deleteMovie:deleteMovieReducer,
     createOrder:createOrderReducer,
     findOrder:findOrderReducer,
-    deleteOrder:deleteOrderReducer
+    deleteOrder:deleteOrderReducer,
+    updateOrder:updateOrderReducer
     
 })
 

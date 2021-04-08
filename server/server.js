@@ -20,6 +20,12 @@ app.use(express.urlencoded({extended:false}))
 const __dirname=path.resolve()
 app.use('/uploads',express.static(path.join(__dirname,'/uploads')))
 
+
+app.get('/get-key',(req,res)=>{
+    let key=process.env.RAZOR_PAY_KEY_ID
+    res.json({key_id:key})
+})
+
 app.use('/movies',movieRoutes)
 app.use('/user',userRoutes)
 app.use('/screen',screenRoutes)

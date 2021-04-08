@@ -348,6 +348,30 @@ main{
 }
 
 
+/*Payment screen styling*/
+
+.payment-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.payment-div h3{
+  color: darkgreen;
+}
+.payment-div .pay-btn{
+  width:250px;
+  margin-top: 1rem;
+}
+
+.payment-div .back-btn{
+  width:250px;
+  margin-top: 1rem;
+}
+
 
 
 
