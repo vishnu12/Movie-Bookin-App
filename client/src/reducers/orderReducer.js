@@ -12,7 +12,8 @@ import {
     ORDER_DELETE_RESET,
     ORDER_UPDATE_FAIL,
     ORDER_UPDATE_REQUEST,
-    ORDER_UPDATE_SUCCESS
+    ORDER_UPDATE_SUCCESS,
+    ORDER_UPDATE_RESET
 } from '../constants/orderConstants'
 
 
@@ -110,7 +111,9 @@ export const updateOrderReducer = (state={updatedOrder:{}},action) => {
                 loading: false,
                 error: action.payload
             }
-               
+        case ORDER_UPDATE_RESET:
+            return {}
+                   
         default:
             return state;
     }

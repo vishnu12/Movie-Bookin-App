@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {useDispatch,useSelector} from 'react-redux'
 import {deleteOrderFunc, updateOrderFunc} from '../actions/orderActions'
 import {ORDER_CREATE_RESET} from '../constants/orderConstants'
@@ -29,6 +29,7 @@ const PaymentScreen = () => {
   }
 
     useEffect(()=>{
+      dispatch({type:ORDER_CREATE_RESET})
       if(deleteSuccess){
         dispatch({type:ORDER_CREATE_RESET})
         history.goBack()

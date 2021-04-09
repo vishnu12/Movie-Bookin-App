@@ -3,7 +3,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {createOrderPay,findOrderScreen} from '../../src/actions/orderActions'
 import {ORDER_DELETE_RESET} from '../constants/orderConstants'
 
-const DrawGrid=({seat,reserved,available,clickData})=>{
+const DrawGrid=({seat,reserved,available,clickData,paid,currentPick})=>{
   return (
     <table className='grid'>
    <tbody>
@@ -11,8 +11,10 @@ const DrawGrid=({seat,reserved,available,clickData})=>{
        {
          seat.map(row=>{
            return <td 
-           className={reserved.indexOf(row) > -1? 'reserved': 'available'}
-           key={row} onClick={() =>clickData(row)}>{row}</td>
+          //  className={reserved.indexOf(row) > -1? 'reserved': 'available'}
+           key={row} onClick={() =>clickData(row)}><button className='seat-btn' 
+           style={{backgroundColor:paid && paid.includes(row)?'#d44a3d':currentPick && currentPick.includes(row)?'green':'#d4bebc'}}
+           disabled={paid && paid.includes(row)?true:false}>{row}</button></td>
          })
        }
      </tr>
@@ -61,10 +63,13 @@ const SeatPicker = ({location,match,history}) => {
    ])
 
    const [reserved, setReserved] = useState([])
+   const [counter, setCounter] = useState(0)
+   const [currentUserPick, setCurrentUserPick] = useState(null)
+   const [paidSeats, setPaidSeats] = useState([])
 
   let ticketPrice=100
   let gst=0.12
-  let noOfTickets=reserved.length
+  let noOfTickets=currentUserPick && currentUserPick.length
   let grandTotal=ticketPrice*noOfTickets+gst*ticketPrice*noOfTickets
   
   let orderData={
@@ -72,11 +77,12 @@ const SeatPicker = ({location,match,history}) => {
     amount:grandTotal,
     screen:screenId,
     movie:movieId,
-    seats:reserved,
+    seats:currentUserPick,
     show_time:time
   }
 
    const clickData=(chosenSeat)=>{
+     setCounter(prev=>prev+1)
     if(reserved.indexOf(chosenSeat)>-1){
       setAvailable(available.concat(seat))
       setReserved(reserved.filter(res=>res!=chosenSeat))
@@ -95,6 +101,7 @@ const SeatPicker = ({location,match,history}) => {
   const findOrder=useSelector(state=>state.findOrder)
   const {order:getOrder}=findOrder
 
+
   const disableSeats=(data) =>{
    
     if(data.length===0){
@@ -107,6 +114,22 @@ const SeatPicker = ({location,match,history}) => {
     
   } 
 
+  const updateReserved=()=>{
+    let array1=[...reserved]
+    let array2=paidSeats && paidSeats
+    let res = array1.filter(item => !array2.includes(item));
+    setCurrentUserPick(res)
+  }
+
+  const getPaidSeats=()=>{
+    const newData=getOrder && getOrder.map(order=>{
+      return order.seats
+    })
+   let merged=[].concat.apply([],newData)
+    setPaidSeats(merged)
+  }
+
+  
   
   useEffect(()=>{
     dispatch({type:ORDER_DELETE_RESET})
@@ -122,9 +145,15 @@ const SeatPicker = ({location,match,history}) => {
     if(getOrder){
       disableSeats(getOrder)
     }
+    getPaidSeats()
+    
   }, [getOrder])
 
-  console.log(reserved);
+  useEffect(()=>{
+    updateReserved()
+  },[counter])
+
+  console.log(orderData);
 
   return (
     <div className="container choose-seat-container">
@@ -135,6 +164,8 @@ const SeatPicker = ({location,match,history}) => {
     reserved={reserved}
     available={available}
     clickData={clickData}
+    paid={paidSeats}
+    currentPick={currentUserPick}
     />
     </div>
 

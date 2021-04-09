@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import {getMovieById} from '../../src/actions/movieActions'
+import {ORDER_UPDATE_RESET} from '../constants/orderConstants'
 
 const Header = () => {
 
@@ -77,6 +78,7 @@ const ChooseTheatre = ({match,history}) => {
       if(!user){
         history.push(`/login`)
       }  
+      dispatch({type:ORDER_UPDATE_RESET})
       dispatch(getMovieById(match.params.id))
     },[match,dispatch,history])
 
