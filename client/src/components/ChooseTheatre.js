@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import {getMovieById} from '../../src/actions/movieActions'
-import {ORDER_UPDATE_RESET} from '../constants/orderConstants'
+import {ORDER_UPDATE_RESET,ORDER_CREATE_RESET} from '../constants/orderConstants'
 
 const Header = () => {
 
@@ -58,7 +58,7 @@ const TimeDiv=({screen,movieId})=>{
               <h3 style={{color: 'red'}}>{itm.name}</h3>
              {
               itm.timing && itm.timing.map((time,i)=>{
-                   return <Link key={i} to={`/book/seats/${itm._id}/${movieId}?time=${time}`}><button className='btn btn-success bg-transparent'>{time}</button></Link>
+                   return <Link key={i} to={`/book/seats/${itm._id}/${movieId}?time=${time}`}><button className='btn btn-success bg-transparent time-btn'>{time}</button></Link>
                })  
              }
           </div>
@@ -78,6 +78,7 @@ const ChooseTheatre = ({match,history}) => {
       if(!user){
         history.push(`/login`)
       }  
+      dispatch({type:ORDER_CREATE_RESET})
       dispatch({type:ORDER_UPDATE_RESET})
       dispatch(getMovieById(match.params.id))
     },[match,dispatch,history])

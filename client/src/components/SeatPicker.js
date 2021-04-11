@@ -72,6 +72,7 @@ const SeatPicker = ({location,match,history}) => {
   let noOfTickets=currentUserPick && currentUserPick.length
   let grandTotal=ticketPrice*noOfTickets+gst*ticketPrice*noOfTickets
   
+
   let orderData={
     user:user._id,
     amount:grandTotal,

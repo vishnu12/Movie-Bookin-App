@@ -12,6 +12,9 @@ const PaymentScreen = () => {
   const dispatch=useDispatch()
   const history =useHistory()
 
+    const userLogin=useSelector(state=>state.userLogin)
+    const {user} =userLogin
+
     const createOrder=useSelector(state=>state.createOrder)
     const {order}=createOrder
 
@@ -29,7 +32,9 @@ const PaymentScreen = () => {
   }
 
     useEffect(()=>{
-      dispatch({type:ORDER_CREATE_RESET})
+     if(!user){
+       history.push('/')
+     }
       if(deleteSuccess){
         dispatch({type:ORDER_CREATE_RESET})
         history.goBack()

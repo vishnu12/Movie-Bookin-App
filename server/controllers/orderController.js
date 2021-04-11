@@ -35,7 +35,10 @@ export const deleteOrder=asyncHandler(async (req,res)=>{
 export const updatePayment=asyncHandler(async(req,res)=>{
     const id=req.params.id
     const updatedOrder=await Order.findByIdAndUpdate(id,{payment_status:'Paid'},{new:true})
+                                                     .populate('movie','name image')
+                                                     .populate('screen','name')
     if(updatePayment) return res.status(201).json(updatedOrder)
+                                                 
     res.status(400).json({error:'Update failed'})
 })
 
