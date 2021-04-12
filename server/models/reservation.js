@@ -21,6 +21,7 @@ const orderSchema=mongoose.Schema({
         default:[]
     },
     show_time:{type:String},
+    date:{type:String},
     payment_status:{type:String,default:'Not Paid'}
 },{timestamps:true})
 

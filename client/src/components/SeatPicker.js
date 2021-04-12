@@ -36,6 +36,9 @@ const SeatPicker = ({location,match,history}) => {
   const createOrder=useSelector(state=>state.createOrder)
   const {loading,success,order}=createOrder
 
+  const dateFinder=useSelector(state=>state.dateFinder)
+  const {date}=dateFinder
+
    const [seat, setSeat] = useState([
      '1A','2A','3A','4A','5A',
      '1B','2B','3B','4B','5B',
@@ -72,6 +75,7 @@ const SeatPicker = ({location,match,history}) => {
   let noOfTickets=currentUserPick && currentUserPick.length
   let grandTotal=ticketPrice*noOfTickets+gst*ticketPrice*noOfTickets
   
+  let dateOfBooking=`${date && date.date},${date && date.day},${date && date.month}`
 
   let orderData={
     user:user._id,
@@ -79,7 +83,8 @@ const SeatPicker = ({location,match,history}) => {
     screen:screenId,
     movie:movieId,
     seats:currentUserPick,
-    show_time:time
+    show_time:time,
+    date:dateOfBooking
   }
 
    const clickData=(chosenSeat)=>{
@@ -137,7 +142,7 @@ const SeatPicker = ({location,match,history}) => {
    if(success){
     history.push('/payment')
    }else{
-    dispatch(findOrderScreen(screenId,time))
+    dispatch(findOrderScreen(screenId,time,dateOfBooking))
    }
    
   },[dispatch,location,match,success])
@@ -154,7 +159,6 @@ const SeatPicker = ({location,match,history}) => {
     updateReserved()
   },[counter])
 
-  console.log(orderData);
 
   return (
     <div className="container choose-seat-container">

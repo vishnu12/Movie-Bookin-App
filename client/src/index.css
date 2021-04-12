@@ -303,7 +303,19 @@ main{
 
 .choose-seat-container .choose-seats{
   overflow: hidden;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.choose-seat-container .choose-seats h2{
+  text-align: center;
+  margin-top: 1rem;
+  color: brown;
+  font-weight: 900;
+  text-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0.45;
 }
 
 .grid{

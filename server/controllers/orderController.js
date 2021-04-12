@@ -17,7 +17,8 @@ export const getOrderPerScreen=asyncHandler(async (req,res) => {
 
     let screenId=req.params.id
     let show_time=req.params.time
-    const order=await Order.find({$and:[{'screen':screenId},{'show_time':show_time}]})
+    let date=req.params.date
+    const order=await Order.find({$and:[{'screen':screenId},{'show_time':show_time},{'date':date}]})
                             .populate('user','name')
     if (order) return res.status(200).json(order)
     res.status(404).json({error:'Not found'})
@@ -40,6 +41,17 @@ export const updatePayment=asyncHandler(async(req,res)=>{
     if(updatePayment) return res.status(201).json(updatedOrder)
                                                  
     res.status(400).json({error:'Update failed'})
+})
+
+
+export const deleteAll=asyncHandler(async (req,res)=>{
+
+    try {
+        await Order.remove({})
+        res.status(200).json({message:'all removed'})
+    } catch (err) {
+        res.status(400).json({error:err.response})
+    }
 })
 
 

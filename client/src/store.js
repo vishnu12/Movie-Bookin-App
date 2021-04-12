@@ -28,6 +28,8 @@ import {
     updateOrderReducer
 } from './reducers/orderReducer'
 
+import {dateReducer} from './reducers/dateReducer'
+
 const reducer=combineReducers({
     userLogin:userLoginReducer,
     movieList:movieListReducer,
@@ -35,6 +37,7 @@ const reducer=combineReducers({
     modal:modalReducer,
     register:userRegisterReducer,
     ratingReducer,
+    dateFinder:dateReducer,
     addReview:addReviewReducer,
     screensList:viewScreensReducer,
     createScreen:addScreensReducer,

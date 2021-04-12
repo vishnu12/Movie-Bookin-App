@@ -38,7 +38,7 @@ function App() {
      <Route exact path='/movies' component={listMovies}/>
      <Route exact path='/add-movies' component={addMovies}/>
      <Route exact path='/book/:id' component={ChooseTheatre}/>
-     <Route exact path='/book/seats/:screenId/:movieId/:time?' component={SeatPicker}/>
+     <Route exact path='/book/seats/:screenId/:movieId/:time?/:date?' component={SeatPicker}/>
      <Route exact path='/payment' component={PaymentScreen}/>
      <Route exact path='/final' component={FinalScreen}/>
    </Switch>

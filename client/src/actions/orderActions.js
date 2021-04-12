@@ -35,11 +35,11 @@ export const createOrderPay =(order)=>async (dispatch)=>{
    }
 }
 
-export const findOrderScreen =(id,time)=>async (dispatch)=>{
+export const findOrderScreen =(id,time,date)=>async (dispatch)=>{
     try {
         dispatch({type:ORDER_FIND_REQUEST})
  
-        const {data} = await axios.get(`/order/find/${id}/${time}`)
+        const {data} = await axios.get(`/order/find/${id}/${time}/${date}`)
  
         dispatch({
             type:ORDER_FIND_SUCCESS,
