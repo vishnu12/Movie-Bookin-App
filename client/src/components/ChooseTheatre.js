@@ -107,6 +107,20 @@ const Header = () => {
 
 
 const TimeDiv=({screen,movieId})=>{
+
+    const disableBtn=useSelector(state=>state.disableBtn)
+    const {disable,value} =disableBtn
+    const disableItem=(args)=>{
+        return args==0 && disable && (value==='1'||value==='12'||value==='123'||value==='1234')?true
+        :
+        args===1 && disable && (value==='12'||value==='123'||value==='1234')?true
+        :
+        args===2 && disable && (value==='123'||value==='1234')?true
+        :
+        args===3 && disable && (value==='1234')?true
+        :
+        false
+    }
   return(
       <>
       {screen && screen.map((itm,k)=>{
@@ -114,7 +128,11 @@ const TimeDiv=({screen,movieId})=>{
               <h3 style={{color: 'red'}}>{itm.name}</h3>
              {
               itm.timing && itm.timing.map((time,i)=>{
-                   return <Link key={i} to={`/book/seats/${itm._id}/${movieId}?time=${time}`}><button className='btn btn-success bg-transparent time-btn'>{time}</button></Link>
+                   return <Link key={i} to={`/book/seats/${itm._id}/${movieId}?time=${time}`}>
+                       <button className='btn btn-success bg-transparent time-btn'
+                       disabled={disableItem(i)}
+                       >{time}</button>
+                       </Link>
                })  
              }
           </div>

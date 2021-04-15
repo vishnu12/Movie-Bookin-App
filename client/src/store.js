@@ -14,7 +14,6 @@ import {
         deleteMovieReducer
        } from './reducers/movieReducers'
 
-import {modalReducer} from './reducers/modelReducer'
 import {ratingReducer} from './reducers/ratingReducer'
 import {viewScreensReducer,
         addScreensReducer,
@@ -29,12 +28,13 @@ import {
 } from './reducers/orderReducer'
 
 import {dateReducer} from './reducers/dateReducer'
+import {btnDisableReducer} from './reducers/btnReducer'
+import {modalShiftReducer} from './reducers/modalReducer'
 
 const reducer=combineReducers({
     userLogin:userLoginReducer,
     movieList:movieListReducer,
     movieById:movieByIdReducer,
-    modal:modalReducer,
     register:userRegisterReducer,
     ratingReducer,
     dateFinder:dateReducer,
@@ -47,7 +47,9 @@ const reducer=combineReducers({
     createOrder:createOrderReducer,
     findOrder:findOrderReducer,
     deleteOrder:deleteOrderReducer,
-    updateOrder:updateOrderReducer
+    updateOrder:updateOrderReducer,
+    disableBtn:btnDisableReducer,
+    modalShift:modalShiftReducer
     
 })
 
@@ -55,8 +57,12 @@ const reducer=combineReducers({
 const userFormStorage=localStorage.getItem('user')?
 JSON.parse(localStorage.getItem('user')):null
 
+const disableStatusFromStorage=localStorage.getItem('DISB_TIMNG')?
+JSON.parse(localStorage.getItem('DISB_TIMNG')):''
+
 const initialState={
    userLogin:{user:userFormStorage}, 
+   disableBtn:disableStatusFromStorage
 }
 const middleware=[thunk]
 

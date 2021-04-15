@@ -4,6 +4,7 @@ import { MdReorder } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { Link } from 'react-router-dom';
 import { logout } from '../actions/userActions';
+import {ENABLE_MODAL} from '../constants/modalConstants'
 
 
 
@@ -38,6 +39,7 @@ const Navbar = () => {
     <Link className="dropdown-item" to="/screens">Screens</Link>
     <Link className="dropdown-item" to="/movies">Movies</Link>
     <Link className="dropdown-item" to="/bookings">Bookings</Link>
+    <Link className="dropdown-item" to="/manage-booking">Manage Bookings</Link>
   </div>
 </div>
   }        
@@ -49,8 +51,8 @@ const Navbar = () => {
              <button className='btn btn-outline-dark' onClick={()=>logoutHandler()}>Logout</button>
            }
             <IconContext.Provider value={{ color: "black", className: "global-class-name",size:'25px',style:{cursor:'pointer'} }}>
-                        <span className='icon-btn' onClick={()=>dispatch({type:'MODAL_SHIFT'})}>
-                            <MdReorder />
+                        <span className='icon-btn'>
+                            <MdReorder onClick={()=>dispatch({type:ENABLE_MODAL})}/>
                         </span>
              </IconContext.Provider>
         </div>

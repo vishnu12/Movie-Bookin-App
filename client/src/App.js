@@ -1,5 +1,4 @@
 import React from 'react';
-import {useDispatch} from 'react-redux'
 import './App.css';
 import Navbar from './components/Navbar';
 import {Switch,Route} from 'react-router-dom'
@@ -17,14 +16,11 @@ import SeatPicker from './components/SeatPicker';
 import ChooseTheatre from './components/ChooseTheatre';
 import PaymentScreen from './components/PaymentScreen';
 import FinalScreen from './components/FinalScreen';
+import manageBookings from './components/admin-actions/manageBookings';
 
 function App() {
-  const dispatch=useDispatch()
   return (
     <>
-    {
-      document.addEventListener('click',()=>dispatch({type:'CLOSE_MODAL'}))
-    }
     <Navbar />
     <main>
     <ModalComp />
@@ -41,6 +37,7 @@ function App() {
      <Route exact path='/book/seats/:screenId/:movieId/:time?/:date?' component={SeatPicker}/>
      <Route exact path='/payment' component={PaymentScreen}/>
      <Route exact path='/final' component={FinalScreen}/>
+     <Route exact path='/manage-booking' component={manageBookings}/>
    </Switch>
    </main>
    <Footer />
