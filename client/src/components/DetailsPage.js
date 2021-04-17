@@ -93,7 +93,7 @@ const DetailsPage = ({match}) => {
         }
       </div>
 </div>
-<div className='col-12 col-md-4' style={{marginTop:'2rem'}}>
+<div className='col-12 col-md-4 review-container' style={{marginTop:'2rem'}}>
 <Link to={`/book/${movie && movie._id}`} className='btn btn-danger' style={{width:'10rem'}}>Book Tickets</Link>
 <h3 className='mt-3 text-center'>Reviews</h3>
 {
@@ -101,7 +101,7 @@ const DetailsPage = ({match}) => {
   <form className='col-9 d-flex mt-5 comment-tab' onSubmit={submit}>
 <input type='text' className='mr-2 form-control' onChange={e=>setComment(e.target.value)}/>
 <DynamicRating />
-<button type='submit' className='btn btn-outline-dark ml-2 p-1'>Add</button>
+<button type='submit' className='btn btn-outline-dark ml-2 p-1 w-25'>ADD</button>
 </form>
 :
 <h7>Please <Link to={`/login?redirect=/details/${movieId}`}>login</Link> to write comment</h7>

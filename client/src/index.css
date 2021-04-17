@@ -156,6 +156,33 @@ main{
   color: red;
 }
 
+/*Review container*/
+
+.review-container{
+  width: 100%;
+}
+.review-container h3{
+text-transform: uppercase;
+font-weight: 700;
+margin-top: 2rem !important;
+}
+
+.review-container input{
+  width: 70%;
+}
+
+.review-container input:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+
+.review-container button:focus{
+  outline: none;
+  box-shadow: none;
+}
+
+/*Modal comp styles*/
 .modal-container{
   position: absolute;
   display: block;

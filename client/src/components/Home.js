@@ -42,7 +42,7 @@ useEffect(()=>{
                id={item._id}
                image={item.image}
                movie={item.name}
-               rating={item.rating}/></Link>
+               rating={item.reviews.reduce((acc,itm)=>acc+itm.rating,0)/item.reviews.length} /></Link>
                </div>
       })
     }
