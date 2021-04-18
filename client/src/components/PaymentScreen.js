@@ -57,17 +57,17 @@ const PaymentScreen = () => {
   const options = {
     key: `${key}`,
     amount: `${order && order.amount*100}`, //  = INR 1
-    name: 'Acme shop',
-    description: 'some description',
+    name: `${user.name}`,
+    description: 'ticket payment',
     image: 'https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png',
     handler: function(response) {
         // alert(response.razorpay_payment_id);
         order && dispatch(updateOrderFunc(order._id))
     },
     prefill: {
-        name: 'Gaurav',
+        name: `${user.name}`,
         contact: '9999999999',
-        email: 'demo@demo.com'
+        email: `${user.email}`
     },
     notes: {
         address: 'some address'

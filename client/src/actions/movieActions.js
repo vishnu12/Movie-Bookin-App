@@ -19,12 +19,12 @@ MOVIE_DELETE_SUCCESS
 } from '../constants/movieConstants'
 
 
-export const movieListAll=()=>async (dispatch)=>{
+export const movieListAll=(keyword='')=>async (dispatch)=>{
 
     try {
         dispatch({type:MOVIE_LIST_REQUEST})
 
-        const {data}=await axios.get('/movies/all')
+        const {data}=await axios.get(`/movies/all?keyword=${keyword}`)
         dispatch({
             type:MOVIE_LIST_SUCCESS,
             payload:data

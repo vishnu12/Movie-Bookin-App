@@ -14,15 +14,19 @@ return <div className='error-div'>
       </div>
 }
 
+
 const userLogin=useSelector(state=>state.userLogin)
-const {loading,error,user}=userLogin
+const {error,user}=userLogin
 
 
 useEffect(()=>{
  if(user){
     history.push(redirect)
  }
-},[history,user,redirect])
+ if(error){
+   alert('Invalid Credentials, Login Failed')
+ }
+},[history,user,redirect,error])
 
 
 

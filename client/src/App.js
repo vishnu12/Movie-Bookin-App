@@ -26,6 +26,7 @@ function App() {
     <ModalComp />
    <Switch>
      <Route exact path='/' component={Home}/>
+     <Route exact path='/search/:keyword' component={Home}/>
      <Route exact path='/details/:id' component={DetailsPage}/>
      <Route exact path='/login' component={Login}/>
      <Route exact path='/register' component={Register}/>

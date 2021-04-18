@@ -3,7 +3,13 @@ import Movie from '../models/movie.js'
 
 export const movieList=asyncHandler(async (req,res)=>{
 
-    const movies=await Movie.find()
+    const keyword=req.query.keyword?{
+        name:{
+            $regex:req.query.keyword,
+            $options:'i'
+        }
+    }:{}
+    const movies=await Movie.find({...keyword})
                  .populate('screens.screen','_id name')
                 
 

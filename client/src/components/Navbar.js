@@ -1,15 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
+import {Route} from 'react-router-dom'
 import { MdReorder } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { Link } from 'react-router-dom';
 import { logout } from '../actions/userActions';
 import {ENABLE_MODAL} from '../constants/modalConstants'
+import SearchComponent from './SearchComponent';
 
 
 
 const Navbar = () => {
-
 
   const dispatch=useDispatch()
   const userLogin=useSelector(state=>state.userLogin)
@@ -22,11 +23,11 @@ const Navbar = () => {
  
   return (
     <header className='header-nav bg-light'>
-        <div className="col-md-8">
+        <div className="col-md-8 child-1">
           <Link to='/'>
         <img style={{height:'75px'}} src='https://www.thefashionstation.in/wp-content/uploads/2019/07/bookmyshow-1-1600x757.png' alt='icon'/>
         </Link>
-        <input type='text' placeholder='search for movies'/>
+        <Route render={({history})=><SearchComponent history={history} />} />
         
         </div>
         <div className="col-md-4 child-2">

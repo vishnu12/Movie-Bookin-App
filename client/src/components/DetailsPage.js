@@ -104,7 +104,7 @@ const DetailsPage = ({match}) => {
 <button type='submit' className='btn btn-outline-dark ml-2 p-1 w-25'>ADD</button>
 </form>
 :
-<h7>Please <Link to={`/login?redirect=/details/${movieId}`}>login</Link> to write comment</h7>
+<h5>Please <Link to={`/login?redirect=/details/${movieId}`}>login</Link> to write comment</h5>
 }
 
 <div className='reviews-tab mt-5'>

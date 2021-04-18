@@ -21,7 +21,12 @@ body{
  
 }
 
-.header-nav input{
+.header-nav .child-1{
+  display: flex;
+  align-items: center;
+}
+
+.search-form input{
   width: 400px;
   margin-left: 10px;
   border: 2px solid grey;
@@ -70,6 +75,12 @@ main{
 
   background-color: beige !important;
    
+}
+
+/*Sidemenu*/
+
+.widget-card{
+  border-radius: 15px
 }
 
 .footer{

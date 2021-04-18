@@ -8,7 +8,7 @@ import {movieListAll} from '../actions/movieActions'
 
 
 
-const Home = () => {
+const Home = ({match}) => {
 
 const dispatch=useDispatch() 
 
@@ -16,10 +16,11 @@ const movieList=useSelector(state=>state.movieList)
 
 const {loading,error,movies}=movieList
 
+const keyword=match.params.keyword
 
 useEffect(()=>{
-  dispatch(movieListAll())
-},[dispatch])
+  dispatch(movieListAll(keyword))
+},[dispatch,match])
 
   return (
     <section className='home'>
@@ -31,7 +32,7 @@ useEffect(()=>{
 </div>
 <div className="col-md-9">
 <div style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
-<h4 className='mt-5'>Movies</h4>
+<h4 className='mt-5' style={{fontWeight:'bold'}}>Movies</h4>
 <a className='mt-3' style={{textDecoration:'none'}}>View more</a>
 </div>
 <div className="row">
