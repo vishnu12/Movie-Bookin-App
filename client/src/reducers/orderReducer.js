@@ -13,7 +13,10 @@ import {
     ORDER_UPDATE_FAIL,
     ORDER_UPDATE_REQUEST,
     ORDER_UPDATE_SUCCESS,
-    ORDER_UPDATE_RESET
+    ORDER_UPDATE_RESET,
+    ORDER_DELETEALL_FAIL,
+    ORDER_DELETEALL_REQUEST,
+    ORDER_DELETEALL_SUCCESS
 } from '../constants/orderConstants'
 
 
@@ -114,6 +117,28 @@ export const updateOrderReducer = (state={updatedOrder:{}},action) => {
         case ORDER_UPDATE_RESET:
             return {}
                    
+        default:
+            return state;
+    }
+}
+
+export const deleteAllOrderReducer = (state={},action) => {
+    switch (action.type) {
+        case ORDER_DELETEALL_REQUEST:
+            return {
+                loading: true
+            }
+        case ORDER_DELETEALL_SUCCESS:
+            return {
+                loading: false,
+                success: true
+            }
+        case ORDER_DELETEALL_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+               
         default:
             return state;
     }

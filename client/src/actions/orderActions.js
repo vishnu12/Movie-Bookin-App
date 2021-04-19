@@ -11,7 +11,10 @@ ORDER_DELETE_SUCCESS,
 ORDER_DELETE_REQUEST,
 ORDER_UPDATE_FAIL,
 ORDER_UPDATE_REQUEST,
-ORDER_UPDATE_SUCCESS
+ORDER_UPDATE_SUCCESS,
+ORDER_DELETEALL_FAIL,
+ORDER_DELETEALL_REQUEST,
+ORDER_DELETEALL_SUCCESS
 } from '../constants/orderConstants'
 
 
@@ -87,6 +90,26 @@ export const findOrderScreen =(id,time,date)=>async (dispatch)=>{
     } catch (error) {
      dispatch({
          type:ORDER_UPDATE_FAIL,
+         payload:error.response && error.response.data.message?
+         error.response.data.message : error.message
+     })
+    }
+ }
+
+
+
+ export const deleteAllOrderFunc =()=>async (dispatch)=>{
+    try {
+        dispatch({type:ORDER_DELETEALL_REQUEST})
+ 
+        await axios.delete(`/order/delete/all`)
+ 
+        dispatch({
+            type:ORDER_DELETEALL_SUCCESS,
+         })
+    } catch (error) {
+     dispatch({
+         type:ORDER_DELETEALL_FAIL,
          payload:error.response && error.response.data.message?
          error.response.data.message : error.message
      })

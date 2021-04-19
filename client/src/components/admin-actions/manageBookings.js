@@ -1,11 +1,16 @@
-import React,{useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React,{useState,useEffect} from 'react'
+import {useDispatch,useSelector} from 'react-redux'
 import {DISABLE_BTN,ENABLE_BTN} from '../../constants/btnConstants'
+import {deleteAllOrderFunc} from '../../actions/orderActions'
 
 const manageBookings = () => {
   
   const dispatch=useDispatch()  
   const [value, setValue] = useState(null)
+
+  const clearOrders=useSelector(state=>state.clearOrders)
+
+  const {success}=clearOrders
 
   const handleDisable=()=>{
      dispatch({
@@ -29,7 +34,23 @@ const manageBookings = () => {
       alert('everything has been enabled')
   }
 
+  const handleClear=()=>{
+    if(window.confirm('Are you sure')){
+      dispatch(deleteAllOrderFunc())
+    }
+  }
+
+  useEffect(()=>{
+    if(success){
+      alert('Clered All form Database')
+    }
+  })
+
   return (
+    <div className='container'>
+    <div className='clear-booking-container'>
+      <button className='btn btn-outline-danger' onClick={handleClear}>Clear Bookings</button>
+    </div>
     <div className='manage-bookings'>
       <h3>Disable the booking timings</h3>
        <select className="custom-select" onChange={e=>setValue(e.target.value)}>
@@ -41,6 +62,7 @@ const manageBookings = () => {
        </select>
        <button className='btn btn-outline-dark' onClick={handleDisable}>DISABLE</button>
        <button className='btn btn-outline-dark' onClick={handleEnable}>ENABLE</button>
+    </div>
     </div>
   )
 }

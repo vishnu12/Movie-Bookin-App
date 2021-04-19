@@ -24,7 +24,8 @@ import {
     createOrderReducer,
     findOrderReducer,
     deleteOrderReducer,
-    updateOrderReducer
+    updateOrderReducer,
+    deleteAllOrderReducer
 } from './reducers/orderReducer'
 
 import {dateReducer} from './reducers/dateReducer'
@@ -49,7 +50,8 @@ const reducer=combineReducers({
     deleteOrder:deleteOrderReducer,
     updateOrder:updateOrderReducer,
     disableBtn:btnDisableReducer,
-    modalShift:modalShiftReducer
+    modalShift:modalShiftReducer,
+    clearOrders:deleteAllOrderReducer
     
 })
 
