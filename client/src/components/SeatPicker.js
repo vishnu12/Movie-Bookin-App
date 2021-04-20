@@ -100,11 +100,7 @@ const SeatPicker = ({location,match,history}) => {
    }
 
    const createOrderFunc=(order) =>{
-     if(order={}){
-       alert('Please select the seats')
-     }else{
-      dispatch(createOrderPay(order))
-     }
+    dispatch(createOrderPay(order))
      
    }
 

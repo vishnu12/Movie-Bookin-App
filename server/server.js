@@ -10,8 +10,9 @@ import uploadRoute from './routes/uploadRoute.js'
 import orderRoutes from './routes/orderRoutes.js'
 
 dotenv.config()
-const app=express()
 connectDB()
+
+const app=express()
 
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
@@ -31,6 +32,18 @@ app.use('/user',userRoutes)
 app.use('/screen',screenRoutes)
 app.use('/upload',uploadRoute)
 app.use('/order',orderRoutes)
+
+
+if(process.env.NODE_ENV==='production'){
+    app.use(express.static(path.join(__dirname,'..','/client/build')))
+    app.use('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'..','client','build','index.html'))
+    })
+ }else{
+     app.get('/',(req,res)=>{
+         res.send('API is running')
+     })
+ }
 
 
 const port = process.env.PORT || 3001
