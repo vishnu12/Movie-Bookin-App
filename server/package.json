@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "server": "nodemon server.js",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
     "data:import": "node seeder",
     "data:destroy": "node seeder -d"
   },
