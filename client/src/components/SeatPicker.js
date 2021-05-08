@@ -65,6 +65,12 @@ const SeatPicker = ({location,match,history}) => {
     '1J','2J','3J','4J','5J',
    ])
 
+   useEffect(()=>{
+     if(!user){
+       history.push('/')
+     }
+   })
+
    const [reserved, setReserved] = useState([])
    const [counter, setCounter] = useState(0)
    const [currentUserPick, setCurrentUserPick] = useState(null)
@@ -78,7 +84,7 @@ const SeatPicker = ({location,match,history}) => {
   let dateOfBooking=`${date && date.date},${date && date.day},${date && date.month}`
 
   let orderData={
-    user:user._id,
+    user:user && user._id,
     amount:grandTotal,
     screen:screenId,
     movie:movieId,
